@@ -2,7 +2,7 @@
 
 #include "common.hpp"
 
-template <Scalar Type, unsigned int Size>
+template <Scalar Type, size_t Size>
 class Vec
 {
 
@@ -125,13 +125,13 @@ public:
 
 
 	template <Scalar T>
-	static Vec_t linearCombination(const Vec_t * const vecs, const T * const scalars, unsigned int count)
+	static Vec_t linearCombination(const Vec_t * const vecs, const T * const scalars, size_t count)
 	{
 		Vec_t result;
-		for (unsigned int i = 0; i < Size; ++i)
+		for (size_t i = 0; i < Size; ++i)
 		{
 			result.data[i] = 0;
-			for (unsigned int j = 0; j < count; ++j)
+			for (size_t j = 0; j < count; ++j)
 			{
 				result.data[i] += vecs[j].data[i] * scalars[j];
 			}
@@ -145,11 +145,11 @@ private:
 
 };
 
-template <typename Type, unsigned int Size>
+template <typename Type, size_t Size>
 std::ostream & operator<<(std::ostream & os, const Vec<Type, Size> & vec)
 {
 	os << "vec" << Size << "[";
-	for (unsigned int i = 0; i < Size; ++i)
+	for (size_t i = 0; i < Size; ++i)
 	{
 		os << vec[i];
 		if (i < Size - 1)
