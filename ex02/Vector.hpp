@@ -133,7 +133,7 @@ public:
 			result.data[i] = 0;
 			for (size_t j = 0; j < count; ++j)
 			{
-				result.data[i] += vecs[j].data[i] * scalars[j];
+				result.data[i] = std::fma(vecs[j].data[i], scalars[j], result.data[i]);
 			}
 		}
 		return result;
